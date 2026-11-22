@@ -43,7 +43,7 @@ con un mensaje prellenado con el detalle de su selección.
 - Accesible WCAG 2.1 AA (trampa de foco, contraste, movimiento reducido)
 
 ### Tecnologías
-HTML5 · CSS Custom Properties · JavaScript Vanilla · GSAP
+HTML5 · CSS · JavaScript Vanilla · GSAP
 
 ### Cómo usar
 Abrí `index.html` en cualquier navegador. No requiere compilación.
