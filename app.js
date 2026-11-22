@@ -1,13 +1,3 @@
-/**
- * LOOPEACE — Storefront Application Logic
- * Implements:
- * - Reactive Bag State & Micro-Drawer
- * - Category Filtering with GSAP Stagger Animations
- * - Multi-Language Translation System (🇺🇸 English, 🇪🇸 Español, 🇫🇷 Français)
- * - Accessible Modal Focus Trapping & Background Inert Isolation
- * - In-Drawer Archival Checkout Flow
- */
-
 (function () {
   'use strict';
 
