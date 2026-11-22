@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOOPEACE — Curated Craft Store</title>
+  <meta name="description" content="A curated collection of bespoke ceramics, textiles, woodwork, and apothecary handcrafted by master artisans.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  
+  <!-- Typography (Avoiding saturated defaults; using Italiana, Prata and Manrope) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Manrope:wght@300;400;500;600&family=Prata&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Masthead -->
+  <header class="masthead" id="masthead">
+    <div class="masthead-container">
+      <div class="masthead-left">
+        <a href="#" class="brand-mark" aria-label="LOOPEACE Home">
+          <img src="assets/logo.png" alt="LOOPEACE" class="brand-logo">
+          <span class="brand-sub" data-i18n="masthead.sub">Curated Craft &amp; Provenance</span>
+        </a>
+      </div>
+
+      <div class="masthead-center">
+        <span class="edition-notice" data-i18n="masthead.edition">Autumn / Winter Edition &bull; Small-Batch Loopeace Release</span>
+      </div>
+
+      <div class="masthead-right">
+        <div class="utility-controls">
+          <!-- Language Selector -->
+          <div class="lang-selector-wrap">
+            <select class="lang-selector" id="langSelector" aria-label="Select display language">
+              <option value="en" selected>🇺🇸 English</option>
+              <option value="es">🇪🇸 Español</option>
+              <option value="fr">🇫🇷 Français</option>
+            </select>
+          </div>
+
+          <span class="currency-tag">USD ($)</span>
+          <div class="search-wrap" id="searchWrap">
+            <button type="button" class="icon-btn search-trigger" aria-label="Search catalog" id="searchBtn" aria-expanded="false" aria-controls="searchInput">
+              <svg class="ui-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+            <div class="search-input-container" id="searchInputContainer">
+              <input type="search" class="search-input" id="searchInput" placeholder="Search pieces…" aria-label="Search pieces" autocomplete="off" spellcheck="false">
+            </div>
+          </div>
+          <button type="button" class="bag-trigger" id="bagTrigger" aria-label="View shopping bag" aria-expanded="false" aria-controls="bagDrawer">
+            <svg class="ui-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="bag-text" data-i18n="masthead.bag">Bag</span>
+            <span class="bag-counter" id="bagCounter">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Surface -->
+  <main class="storefront-main" id="storefrontMain">
+    
+    <!-- Hero Loopeace Introduction -->
+    <section class="atelier-intro" aria-label="Loopeace Philosophy">
+      <div class="intro-content">
+        <h1 class="intro-headline" data-i18n="intro.headline">Objects of enduring craft, shaped by human hands.</h1>
+        <p class="intro-description" data-i18n="intro.description">
+          Each piece in our seasonal atelier represents singular material integrity. Hand-turned oak, wheel-thrown stoneware, pit-fired ceramics, and cold-pressed botanical infusions created in limited editions.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sticky Discipline Filter Bar -->
+    <nav class="filter-sticky-bar" aria-label="Loopeace craft disciplines">
+      <div class="filter-inner">
+        <ul class="filter-list" role="tablist">
+          <li role="presentation">
+            <button type="button" role="tab" class="filter-pill active" data-category="all" aria-selected="true">
+              <span data-i18n="filter.all">All Works</span> <span class="filter-count">8</span>
+            </button>
+          </li>
+          <li role="presentation">
+            <button type="button" role="tab" class="filter-pill" data-category="ceramics" aria-selected="false">
+              <span data-i18n="filter.ceramics">Ceramics</span> <span class="filter-count">2</span>
+            </button>
+          </li>
+          <li role="presentation">
+            <button type="button" role="tab" class="filter-pill" data-category="textiles" aria-selected="false">
+              <span data-i18n="filter.textiles">Textiles</span> <span class="filter-count">2</span>
+            </button>
+          </li>
+          <li role="presentation">
+            <button type="button" role="tab" class="filter-pill" data-category="woodwork" aria-selected="false">
+              <span data-i18n="filter.woodwork">Woodwork</span> <span class="filter-count">2</span>
+            </button>
+          </li>
+          <li role="presentation">
+            <button type="button" role="tab" class="filter-pill" data-category="apothecary" aria-selected="false">
+              <span data-i18n="filter.apothecary">Apothecary</span> <span class="filter-count">2</span>
+            </button>
+          </li>
+        </ul>
+        <div class="filter-meta">
+          <span class="active-discipline-indicator" id="disciplineStatus">Displaying All Disciplines</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Active Search Query Indicator -->
+    <div class="search-query-banner" id="searchQueryBanner" style="display: none;" aria-live="polite">
+      <div class="search-query-inner">
+        <span class="search-query-pill" id="searchQueryPill">
+          <span class="search-query-text" id="searchQueryText"></span>
+          <button type="button" class="search-query-clear" id="searchQueryClear" aria-label="Clear search">✕</button>
+        </span>
+      </div>
+    </div>
+
+    <!-- Catalog Masonry Grid -->
+    <section class="catalog-section" aria-label="Artisanal Catalog">
+      <div class="catalog-grid" id="catalogGrid">
+        
+        <!-- Search Empty State -->
+        <div class="search-empty-state" id="searchEmptyState" style="display: none;" role="status" aria-live="polite">
+          <div class="search-empty-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+          <p class="search-empty-text" id="searchEmptyText"></p>
+          <button type="button" class="search-reset-btn" id="searchResetBtn">Clear search</button>
+        </div>
+        
+        <!-- Item 1: Ceramics (Tall Portrait) -->
+        <article class="product-card card-tall" data-category="ceramics" data-id="1">
+          <div class="card-media-wrapper">
+            <img src="assets/ceramics-vase.jpg" alt="Raw earth fluted stoneware amphora vessel" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='assets/ceramics-vase.jpg'">
+            <div class="card-badge" data-i18n="product.1.badge">Edition 01 / 24</div>
+          </div>
+          <div class="card-details">
+            <h2 class="card-title" data-i18n="product.1.title">Raw Earth Fluted Amphora</h2>
+            <div class="card-provenance" data-i18n="product.1.provenance">Ceramics &bull; Studio Kiso, Nagano</div>
+            <p class="card-material" data-i18n="product.1.material">Coarse stoneware with matte feldspar glaze, wood-fired for 48 hours.</p>
+            <div class="card-price-row">
+              <span class="card-price">$140</span>
+              <button type="button" class="text-add-btn" data-id="1" data-i18n="product.buyNow" aria-label="Buy Raw Earth Fluted Amphora Now">Buy Now</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 2: Textiles (Square) -->
+        <article class="product-card card-square" data-category="textiles" data-id="2">
+          <div class="card-media-wrapper">
+            <img src="assets/textiles-throw.jpg" alt="Hand-loomed wild indigo wool and linen throw" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='assets/textiles-throw.jpg'">
+            <div class="card-badge" data-i18n="product.2.badge">Edition 04 / 15</div>
+          </div>
+          <div class="card-details">
+            <h2 class="card-title" data-i18n="product.2.title">Indigo Loomed Wool Blanket</h2>
+            <div class="card-provenance" data-i18n="product.2.provenance">Textiles &bull; Clare Atelier, Ireland</div>
+            <p class="card-material" data-i18n="product.2.material">Unspun organic highland fleece and raw flax linen, natural botanical indigo dip.</p>
+            <div class="card-price-row">
+              <span class="card-price">$260</span>
+              <button type="button" class="text-add-btn" data-id="2" data-i18n="product.buyNow" aria-label="Buy Indigo Loomed Wool Blanket Now">Buy Now</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 3: Woodwork (Landscape Wide) - Single Focused Product -->
+        <article class="product-card card-wide" data-category="woodwork" data-id="3">
+          <div class="card-media-wrapper">
+            <img src="assets/woodwork-pedestal.jpg" alt="Hand-turned smoked oak pedestal board with walnut spoon" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='assets/woodwork-pedestal.jpg'">
+            <div class="card-badge" data-i18n="product.3.badge">Edition 02 / 18</div>
+          </div>
+          <div class="card-details">
+            <h2 class="card-title" data-i18n="product.3.title">Smoked Oak Pedestal Board</h2>
+            <div class="card-provenance" data-i18n="product.3.provenance">Woodwork &bull; M. Lindqvist, Småland</div>
+            <p class="card-material" data-i18n="product.3.material">Felled windthrow European white oak, smoked with peat moss and sealed in organic walnut oil.</p>
+            <div class="card-price-row">
+              <span class="card-price">$185</span>
+              <button type="button" class="text-add-btn" data-id="3" data-i18n="product.buyNow" aria-label="Buy Smoked Oak Pedestal Board Now">Buy Now</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 4: Apothecary (Compact Portrait) - Single Focused Product -->
+        <article class="product-card card-tall" data-category="apothecary" data-id="4">
+          <div class="card-media-wrapper">
+            <img src="assets/apothecary-oil.jpg" alt="Botanical cypress and wild vetiver tincture bottle" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='assets/apothecary-oil.jpg'">
+            <div class="card-badge" data-i18n="product.4.badge">Batch Nº 09</div>
+          </div>
+          <div class="card-details">
+            <h2 class="card-title" data-i18n="product.4.title">Cypress &amp; Wild Vetiver Oil</h2>
+            <div class="card-provenance" data-i18n="product.4.provenance">Apothecary &bull; Distillerie Sainte-Baume</div>
+            <p class="card-material" data-i18n="product.4.material">Cold steam distilled Mediterranean cypress needles, wild root vetiver, bitter resin in 100ml amber glass.</p>
+            <div class="card-price-row">
+              <span class="card-price">$65</span>
+              <button type="button" class="text-add-btn" data-id="4" data-i18n="product.buyNow" aria-label="Buy Cypress & Wild Vetiver Oil Now">Buy Now</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 5: Ceramics (Square) -->
+        <article class="product-card card-square" data-category="ceramics" data-id="5">
+          <div class="card-media-wrapper">
+            <img src="assets/ceramics-vase.jpg" alt="Ash-glazed low stoneware serving bowl" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='assets/ceramics-vase.jpg'">
+            <div class="card-badge" data-i18n="product.5.badge">Edition 08 / 30</div>
+          </div>
+          <div class="card-details">
+            <h2 class="card-title" data-i18n="product.5.title">Ash-Glazed Shallow Serving Bowl</h2>
+            <div class="card-provenance" data-i18n="product.5.provenance">Ceramics &bull; Atelier Vence, Provence</div>
+            <p class="card-material" data-i18n="product.5.material">Terracotta body fired with pine ash glaze, exhibiting subtle green crystallization.</p>
+            <div class="card-price-row">
+              <span class="card-price">$110</span>
+              <button type="button" class="text-add-btn" data-id="5" data-i18n="product.buyNow" aria-label="Buy Ash-Glazed Shallow Serving Bowl Now">Buy Now</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 6: Textiles (Tall Portrait) -->
+        <article class="product-card card-tall" data-category="textiles" data-id="6">
+          <div class="card-media-wrapper">
+            <img src="assets/textiles-throw.jpg" alt="Raw washed linen kimono atelier robe" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='assets/textiles-throw.jpg'">
+            <div class="card-badge" data-i18n="product.6.badge">Edition 03 / 12</div>
+          </div>
+          <div class="card-details">
+            <h2 class="card-title" data-i18n="product.6.title">Washed Linen Atelier Robe</h2>
+            <div class="card-provenance" data-i18n="product.6.provenance">Textiles &bull; Linen Workshop, Normandy</div>
+            <p class="card-material" data-i18n="product.6.material">Heavyweight French flax linen tumbled with volcanic pumice for soft tactile structure.</p>
+            <div class="card-price-row">
+              <span class="card-price">$220</span>
+              <button type="button" class="text-add-btn" data-id="6" data-i18n="product.buyNow" aria-label="Buy Washed Linen Atelier Robe Now">Buy Now</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 7: Woodwork (Square) - Single Focused Product -->
+        <article class="product-card card-square" data-category="woodwork" data-id="7">
+          <div class="card-media-wrapper">
+            <img src="assets/woodwork-basin.jpg" alt="Charred cedar sculptural basin" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='assets/woodwork-basin.jpg'">
+            <div class="card-badge" data-i18n="product.7.badge">Unique Piece 01 / 01</div>
+          </div>
+          <div class="card-details">
+            <h2 class="card-title" data-i18n="product.7.title">Charred Cedar Sculptural Basin</h2>
+            <div class="card-provenance" data-i18n="product.7.provenance">Woodwork &bull; Studio Hida, Gifu</div>
+            <p class="card-material" data-i18n="product.7.material">Old-growth Japanese red cedar gouged by hand and treated with traditional shou sugi ban flame finish.</p>
+            <div class="card-price-row">
+              <span class="card-price">$310</span>
+              <button type="button" class="text-add-btn" data-id="7" data-i18n="product.buyNow" aria-label="Buy Charred Cedar Sculptural Basin Now">Buy Now</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 8: Apothecary (Wide Landscape) - Single Focused Product -->
+        <article class="product-card card-wide" data-category="apothecary" data-id="8">
+          <div class="card-media-wrapper">
+            <img src="assets/apothecary-incense.jpg" alt="Bitter orange and smoked resin incense bricks" class="card-image" loading="lazy" onerror="this.onerror=null;this.src='assets/apothecary-incense.jpg'">
+            <div class="card-badge" data-i18n="product.8.badge">Batch Nº 14</div>
+          </div>
+          <div class="card-details">
+            <h2 class="card-title" data-i18n="product.8.title">Bitter Orange &amp; Smoked Resin</h2>
+            <div class="card-provenance" data-i18n="product.8.provenance">Apothecary &bull; Botanica Occitane</div>
+            <p class="card-material" data-i18n="product.8.material">Pressed bricks of organic citrus rind, wild frankincense tears, and charred cedar bark shavings.</p>
+            <div class="card-price-row">
+              <span class="card-price">$48</span>
+              <button type="button" class="text-add-btn" data-id="8" data-i18n="product.buyNow" aria-label="Buy Bitter Orange & Smoked Resin Now">Buy Now</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Atelier Provenance Footer Note -->
+    <section class="atelier-manifesto" aria-label="Craft Commitment">
+      <div class="manifesto-inner">
+        <h2 class="manifesto-title" data-i18n="manifesto.title">The Discipline of Provenance</h2>
+        <p class="manifesto-text" data-i18n="manifesto.text">
+          Every piece released by LOOPEACE is numbered, cataloged, and shipped directly with maker documentation and an archival certificate of authenticity. We do not mass-produce; editions close permanently when materials run their natural course.
+        </p>
+        <div class="manifesto-tags">
+          <span class="tag" data-i18n="manifesto.tag1">Small-Batch Guild</span>
+          <span class="tag" data-i18n="manifesto.tag2">Direct Artisan Equity</span>
+          <span class="tag" data-i18n="manifesto.tag3">Biodegradable Packing</span>
+          <span class="tag" data-i18n="manifesto.tag4">Global Insured Dispatch</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Slide-Out Bag Micro-Drawer (Comp C Integration) -->
+  <aside class="bag-drawer" id="bagDrawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Your Atelier Bag">
+    <div class="drawer-header">
+      <div class="drawer-title-group">
+        <h2 class="drawer-title" data-i18n="drawer.title">Atelier Bag</h2>
+        <span class="drawer-count" id="drawerItemCount">0 items</span>
+      </div>
+      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close bag drawer">
+        <svg class="ui-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Drawer Items List -->
+    <div class="drawer-body" id="drawerBody">
+      <!-- Empty State -->
+      <div class="empty-bag-notice" id="emptyNotice">
+        <div class="empty-icon-wrap">
+          <svg class="ui-icon empty-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+          </svg>
+        </div>
+        <p class="empty-title" data-i18n="drawer.emptyTitle">Your bag is currently unfilled</p>
+        <p class="empty-sub" data-i18n="drawer.emptySub">Explore our curated craft disciplines to begin collecting archival atelier pieces.</p>
+      </div>
+
+      <!-- Populated Items Container -->
+      <ul class="drawer-items-list" id="drawerItemsList" role="list"></ul>
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="drawer-footer" id="drawerFooter">
+      <div class="subtotal-row">
+        <span class="subtotal-label" data-i18n="drawer.subtotal">Subtotal</span>
+        <span class="subtotal-value" id="drawerSubtotal">$0.00</span>
+      </div>
+      <p class="shipping-notice" data-i18n="drawer.shipping">Complimentary white-glove packaging &amp; insured courier delivery included.</p>
+      <button type="button" class="checkout-btn" id="checkoutBtn" disabled>
+        <span data-i18n="drawer.checkout">Instant Checkout</span>
+        <svg class="ui-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Veil Backdrop for Bag Drawer -->
+  <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+
+  <!-- Notification Toast for tactile addition feedback -->
+  <div class="toast-indicator" id="toastIndicator" role="status" aria-live="polite">
+    <span class="toast-message" id="toastMessage">Added to your collection</span>
+  </div>
+
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- Main Script -->
+  <script src="app.js"></script>
+</body>
+</html>
