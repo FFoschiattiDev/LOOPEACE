@@ -15,10 +15,9 @@ message detailing their selection.
 - WhatsApp checkout redirect with pre-filled order summary
 - Multi-language UI (English, Español, Français)
 - GSAP scroll animations and micro-interactions
-- WCAG 2.1 AA accessible (focus trap, contrast, reduced-motion)
 
 ### Stack
-HTML5 · CSS Custom Properties · Vanilla JavaScript · GSAP
+HTML5 · CSS · Vanilla JavaScript · GSAP
 
 ### How to use
 Open `index.html` in any browser. No build step required.
@@ -40,7 +39,6 @@ con un mensaje prellenado con el detalle de su selección.
 - Redirección a WhatsApp con resumen del pedido prellenado
 - Interfaz multilingüe (inglés, español, francés)
 - Animaciones GSAP y micro-interacciones
-- Accesible WCAG 2.1 AA (trampa de foco, contraste, movimiento reducido)
 
 ### Tecnologías
 HTML5 · CSS · JavaScript Vanilla · GSAP
